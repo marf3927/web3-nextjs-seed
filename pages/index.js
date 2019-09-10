@@ -47,11 +47,9 @@ export default () => (
 
 			<li>
 				<Link href="/MARFCards">
-					<a>MARF Cards</a>
+					<a>MARFCard</a>
 				</Link>
 			</li>
-
-
 		</ul>
 	</>
 );
