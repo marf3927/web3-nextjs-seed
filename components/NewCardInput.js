@@ -23,6 +23,10 @@ class NewCardInputComp extends React.Component {
 				</Form.Item>
 
 				<Form.Item>
+					{getFieldDecorator('balance', {})(<Input placeholder="balance" />)}
+				</Form.Item>
+
+				<Form.Item>
 					<Button htmlType="submit">MINT</Button>
 				</Form.Item>
 			</Form>
