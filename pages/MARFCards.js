@@ -15,10 +15,13 @@ import NewCardInput from '../components/NewCardInput';
 function getOwner(contract) {
 	return contract.methods.owner().call();
 }
+
 function getCardCount({ contract, from }) {
 	return contract.methods.getCardCount().call();
 }
 
+
+//괄호안에 {}는 파라미터를 오브젝트로 받음.
 function executeMintCard({ contract, name, balance, address, from }) {
 	return contract.methods.mintCard(name, balance, address).send({ from, gas: '300000' });
 }
@@ -100,12 +103,12 @@ const MintableCard = ({ abi, contractAddress }) => {
 		const provider = context.getProvider();
 		const { toPeb } = context.getUtils();
 
-		const { name, address, balance } = values;
+		const { name, balance, address } = values;
 		const transaction = await executeMintCard({
 			contract,
 			name,
-			address,
 			balance,
+			address,
 			from: account.address
 		});
 

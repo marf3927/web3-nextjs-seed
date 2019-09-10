@@ -19,11 +19,11 @@ class NewCardInputComp extends React.Component {
 				<Form.Item>{getFieldDecorator('name', {})(<Input placeholder="Name" />)}</Form.Item>
 
 				<Form.Item>
-					{getFieldDecorator('address', {})(<Input placeholder="Address" />)}
+					{getFieldDecorator('balance', {})(<Input placeholder="balance" />)}
 				</Form.Item>
 
 				<Form.Item>
-					{getFieldDecorator('balance', {})(<Input placeholder="balance" />)}
+					{getFieldDecorator('address', {})(<Input placeholder="Address" />)}
 				</Form.Item>
 
 				<Form.Item>

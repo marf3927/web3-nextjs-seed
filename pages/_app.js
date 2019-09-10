@@ -22,10 +22,12 @@ const connectors = { MetaMask };
 class MyApp extends App {
 	render() {
 		const { Component, pageProps } = this.props;
+
+		const CaverProviderName = process.env.CAVER_PROVIDER;
 		return (
 			<ThemeProvider theme={defaultTheme}>
 				<Web3Provider connectors={connectors} libraryName={'ethers.js'}>
-					<CaverProvider options={{provider: 'baobab'}}>
+					<CaverProvider options={{provider: CaverProviderName}}>
 						<Container>
 							<Component {...pageProps} />
 						</Container>
