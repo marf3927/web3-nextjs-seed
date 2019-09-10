@@ -23,11 +23,11 @@ class MyApp extends App {
 	render() {
 		const { Component, pageProps } = this.props;
 
-		const CaverProviderName = process.env.CAVER_PROVIDER;
+		const caverProviderName = process.env.CAVER_PROVIDER;
 		return (
 			<ThemeProvider theme={defaultTheme}>
 				<Web3Provider connectors={connectors} libraryName={'ethers.js'}>
-					<CaverProvider options={{provider: CaverProviderName}}>
+					<CaverProvider options={{provider: caverProviderName}}>
 						<Container>
 							<Component {...pageProps} />
 						</Container>

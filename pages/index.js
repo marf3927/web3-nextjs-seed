@@ -50,6 +50,18 @@ export default () => (
 					<a>MARFCard</a>
 				</Link>
 			</li>
+
+			<li>
+				<Link href="/flui-cards">
+					<a>FLUI Cards</a>
+				</Link>
+			</li>
+
+			<li>
+				<Link href="/getInitialProps">
+					<a>getInitialProps</a>
+				</Link>
+			</li>
 		</ul>
 	</>
 );
