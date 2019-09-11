@@ -15,16 +15,10 @@ class DepositInputComp extends React.Component {
 		const { getFieldDecorator } = this.props.form;
 
 		return (
-
 			<Form layout="vertical" onSubmit={this.onInputChangeHandle} style={{ marginTop: 32 }}>
-				<Form.Item>{getFieldDecorator('amount', {})(<Input placeholder="Amount" />)}</Form.Item>
-
+				<Form.Item>{getFieldDecorator('amount', {})(<InputNumber placeholder="Amount" />)}</Form.Item>
 				<Form.Item>
-					{getFieldDecorator('address', {})(<Input placeholder="Address" />)}
-				</Form.Item>
-
-				<Form.Item>
-					<Button htmlType="submit">DEPOSIT</Button>
+					<Button htmlType="submit" type="primary">DEPOSIT</Button>
 				</Form.Item>
 			</Form>
 		);
