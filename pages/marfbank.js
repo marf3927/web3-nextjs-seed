@@ -12,6 +12,7 @@ const { Title, Text } = Typography;
 
 // pages/index.jsimport getConfig from 'next/config'
 import getConfig from 'next/config';
+import basicStyle from '../components/basicStyle';
 // Only holds serverRuntimeConfig and publicRuntimeConfig from next.config.js nothing else.
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
@@ -65,10 +66,11 @@ const MARFBank = ({ privateKey, abi, contractAddress }) => {
 
 	const {rowStyle, colStyle, gutter} = basicStyle;
 
+
 	return (
 		<>
 			<div style={{ paddingTop: 24 }}>
-				<Title>FLUI Bank</Title>
+				<Title>MARF Bank</Title>
 				<Text>Account: {account.address}</Text>
 				<br />
 				<Text>Contract Address: {contractAddress}</Text>
