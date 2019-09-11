@@ -7,7 +7,7 @@ import axios from 'axios';
 import DepositInput from '../components/DepositInput';
 import WithdrawInput from '../components/WithdrawInput';
 import TransferInput from '../components/TransferInput';
-import { Button, Divider, PageHeader, Typography } from 'antd';
+import { Button, Divider, Col, PageHeader, Row, Typography } from 'antd';
 const { Title, Text } = Typography;
 
 // pages/index.jsimport getConfig from 'next/config'
@@ -63,6 +63,8 @@ const MARFBank = ({ privateKey, abi, contractAddress }) => {
 		setLastTransaction(transaction);
 	}
 
+	const {rowStyle, colStyle, gutter} = basicStyle;
+
 	return (
 		<>
 			<div style={{ paddingTop: 24 }}>
@@ -74,10 +76,20 @@ const MARFBank = ({ privateKey, abi, contractAddress }) => {
 			</div>
 
 			<Divider />
-
-			<DepositInput onSubmit={onSubmit} />
-			<WithdrawInput onSubmit={onSubmit} />
-			<TransferInput onSubmit={onSubmit} />
+			<Row style={rowStyle} gutter={gutter}>
+				<Col style={colStyle} span={8}>
+					<h3>DEPOSIT</h3>
+					<DepositInput onSubmit={onSubmit} />
+				</Col>
+				<Col style = {colStyle} span = {8}>
+					<h3>WITHDRAW</h3>
+					<WithdrawInput onSubmit={onSubmit} />
+				</Col>
+				<Col style = {colStyle} span = {8}>
+					<h3>TRANSFER</h3>
+					<TransferInput onSubmit={onSubmit} />
+				</Col>
+			</Row>
 			<Divider />
 
 			<JsonContainer>

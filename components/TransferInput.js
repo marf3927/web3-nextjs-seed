@@ -16,7 +16,6 @@ class TransferInputComp extends React.Component {
 
 		return (
 			<Form layout="vertical" onSubmit={this.onInputChangeHandle} style={{ marginTop: 32 }}>
-				<h3>Transfer function</h3>
 				<Form.Item>{getFieldDecorator('to', {})(<Input placeholder="To Address" />)}</Form.Item>
 				<Form.Item>{getFieldDecorator('amount', {})(<InputNumber placeholder="Amount" />)}</Form.Item>
 

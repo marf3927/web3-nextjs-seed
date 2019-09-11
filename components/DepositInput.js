@@ -17,7 +17,6 @@ class DepositInputComp extends React.Component {
 		return (
 
 			<Form layout="vertical" onSubmit={this.onInputChangeHandle} style={{ marginTop: 32 }}>
-				<h3>Deposit function</h3>
 				<Form.Item>{getFieldDecorator('amount', {})(<Input placeholder="Amount" />)}</Form.Item>
 
 				<Form.Item>
