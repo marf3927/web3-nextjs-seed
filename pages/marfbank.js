@@ -52,15 +52,15 @@ const MARFBank = ({ privateKey, abi, contractAddress }) => {
 			}
 
 		const { toPeb } = context.getUtils();
-
 		const amount = parseInt(values.amount * 1000);
-		const transaction = await deposit({
-			contract,
-			amount: toPeb(amount, 'mKLAY'),
-			from: account.address
-		});
 
-		setLastTransaction(transaction);
+		// const transaction = await deposit({
+		// 	contract,
+		// 	amount: toPeb(amount, 'mKLAY'),
+		// 	from: account.address
+		// });
+		//
+		// setLastTransaction(transaction);
 	}
 
 	async function onWithdrawSubmit(values) {
@@ -70,18 +70,17 @@ const MARFBank = ({ privateKey, abi, contractAddress }) => {
 			return;
 		}
 
-
 		const { toPeb } = context.getUtils();
-
 		const amount = parseInt(values.amount * 1000);
-		const { name, address } = values;
-		const transaction = await withdraw({
-			contract,
-			amount: toPeb(amount, 'mKLAY'),
-			from: account.address
-		});
 
-		setLastTransaction(transaction);
+		// const { name, address } = values;
+		// const transaction = await withdraw({
+		// 	contract,
+		// 	amount: toPeb(amount, 'mKLAY'),
+		// 	from: account.address
+		// });
+		//
+		// setLastTransaction(transaction);
 	}
 
 	async function onTransferSubmit(values) {
@@ -91,18 +90,18 @@ const MARFBank = ({ privateKey, abi, contractAddress }) => {
 			return;
 		}
 
-
 		const { toPeb } = context.getUtils();
 		const amount = parseInt(values.amount * 1000);
 		const { to } = values;
-		const transaction = await transfer({
-			contract,
-			to,
-			amount: toPeb(amount, 'mKLAY'),
-			from: account.address
-		});
 
-		setLastTransaction(transaction);
+		// const transaction = await transfer({
+		// 	contract,
+		// 	to,
+		// 	amount: toPeb(amount, 'mKLAY'),
+		// 	from: account.address
+		// });
+		//
+		// setLastTransaction(transaction);
 	}
 
 	const {rowStyle, colStyle, gutter} = basicStyle;
