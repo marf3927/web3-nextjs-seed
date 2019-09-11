@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Form, Input, InputNumber } from 'antd';
 
-class DepositInputComp extends React.Component {
+class WithdrawInputComp extends React.Component {
 	onInputChangeHandle = e => {
 		e.preventDefault();
 		this.props.form.validateFields((err, values) => {
@@ -15,9 +15,8 @@ class DepositInputComp extends React.Component {
 		const { getFieldDecorator } = this.props.form;
 
 		return (
-
 			<Form layout="vertical" onSubmit={this.onInputChangeHandle} style={{ marginTop: 32 }}>
-				<h3>Deposit function</h3>
+				<h3>Withdraw function</h3>
 				<Form.Item>{getFieldDecorator('amount', {})(<Input placeholder="Amount" />)}</Form.Item>
 
 				<Form.Item>
@@ -25,13 +24,13 @@ class DepositInputComp extends React.Component {
 				</Form.Item>
 
 				<Form.Item>
-					<Button htmlType="submit">DEPOSIT</Button>
+					<Button htmlType="submit">WIRHDRAW</Button>
 				</Form.Item>
 			</Form>
 		);
 	}
 }
 
-const DepositInput = Form.create()(DepositInputComp);
+const WithdrawInput = Form.create()(WithdrawInputComp);
 
-export default DepositInput;
+export default WithdrawInput;

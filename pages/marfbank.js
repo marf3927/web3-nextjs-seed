@@ -5,6 +5,8 @@ import JSONPretty from 'react-json-pretty';
 import { JsonContainer } from '../components/PrettyJson.style';
 import axios from 'axios';
 import DepositInput from '../components/DepositInput';
+import WithdrawInput from '../components/WithdrawInput';
+import TransferInput from '../components/TransferInput';
 import { Button, Divider, PageHeader, Typography } from 'antd';
 const { Title, Text } = Typography;
 
@@ -13,8 +15,21 @@ import getConfig from 'next/config';
 // Only holds serverRuntimeConfig and publicRuntimeConfig from next.config.js nothing else.
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
 
-function deposit({ contract, amount, from }) {
-	return contract.methods.mintCard(amount).send({ from, gas: '300000' });
+
+function deposit ({contract, amount, from}){
+	return contract.method.deposit(amount).send({from, gas : '300000'})
+}
+
+function withdraw({contract, amount, from }) {
+	return contract.method.withdraw(amount).send({from, gas : '300000'})
+}
+
+function transfer({contract, to, amount, from}) {
+	return contract.method.transfer(to, from, amount).send({from, gas : '300000'})
+}
+
+function getBalance({contract, from}) {
+	return contract.method.getBalance(from).call()
 }
 
 const MARFBank = ({ privateKey, abi, contractAddress }) => {
@@ -61,6 +76,8 @@ const MARFBank = ({ privateKey, abi, contractAddress }) => {
 			<Divider />
 
 			<DepositInput onSubmit={onSubmit} />
+			<WithdrawInput onSubmit={onSubmit} />
+			<TransferInput onSubmit={onSubmit} />
 			<Divider />
 
 			<JsonContainer>
