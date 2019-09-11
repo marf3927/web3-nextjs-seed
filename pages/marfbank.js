@@ -44,20 +44,61 @@ const MARFBank = ({ privateKey, abi, contractAddress }) => {
 
 	const [lastTransaction, setLastTransaction] = useState({});
 
-	async function onSubmit(values) {
+	async function onDepoistSubmit(values) {
+			console.log('onDepoistSubmit', values);
+			if (context === null) {
+				alert('No provider');
+				return;
+			}
+
+		const { toPeb } = context.getUtils();
+
+		const amount = parseInt(values.amount * 1000);
+		const transaction = await deposit({
+			contract,
+			amount: toPeb(amount, 'mKLAY'),
+			from: account.address
+		});
+
+		setLastTransaction(transaction);
+	}
+
+	async function onWithdrawSubmit(values) {
+		console.log('onWithdrawSubmit', values);
+		if (context === null) {
+			alert('No provider');
+			return;
+		}
+
+
+		const { toPeb } = context.getUtils();
+
+		const amount = parseInt(values.amount * 1000);
+		const { name, address } = values;
+		const transaction = await withdraw({
+			contract,
+			amount: toPeb(amount, 'mKLAY'),
+			from: account.address
+		});
+
+		setLastTransaction(transaction);
+	}
+
+	async function onTransferSubmit(values) {
 		console.log('onSubmit');
 		if (context === null) {
 			alert('No provider');
 			return;
 		}
 
-		const { toPeb } = context.getUtils();
 
-		const { name, address } = values;
-		const transaction = await deposit({
+		const { toPeb } = context.getUtils();
+		const amount = parseInt(values.amount * 1000);
+		const { to } = values;
+		const transaction = await transfer({
 			contract,
-			name,
-			address,
+			to,
+			amount: toPeb(amount, 'mKLAY'),
 			from: account.address
 		});
 
@@ -81,15 +122,15 @@ const MARFBank = ({ privateKey, abi, contractAddress }) => {
 			<Row style={rowStyle} gutter={gutter}>
 				<Col style={colStyle} span={8}>
 					<h3>DEPOSIT</h3>
-					<DepositInput onSubmit={onSubmit} />
+					<DepositInput onSubmit={onDepoistSubmit} />
 				</Col>
 				<Col style = {colStyle} span = {8}>
 					<h3>WITHDRAW</h3>
-					<WithdrawInput onSubmit={onSubmit} />
+					<WithdrawInput onSubmit={onWithdrawSubmit} />
 				</Col>
 				<Col style = {colStyle} span = {8}>
 					<h3>TRANSFER</h3>
-					<TransferInput onSubmit={onSubmit} />
+					<TransferInput onSubmit={onTransferSubmit} />
 				</Col>
 			</Row>
 			<Divider />
@@ -102,7 +143,9 @@ const MARFBank = ({ privateKey, abi, contractAddress }) => {
 	);
 };
 
-MARFBank.getInitialProps = async ({ pathname }) => {
+
+
+	MARFBank.getInitialProps = async ({ pathname }) => {
 	console.log('MARFBank::getInitialProps', pathname);
 	console.log('MARFBank::getInitialProps::serverRuntimeConfig', serverRuntimeConfig);
 
